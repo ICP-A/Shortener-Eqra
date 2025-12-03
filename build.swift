@@ -11,6 +11,10 @@ for (id, url) in links {
     </script>
     """
     let filePath = "./root/l/\(id).html"
-    let r = FileManager.default.createFile(atPath: filePath, contents: html.data(using: .utf8))
-    print("[INFO] created \(filePath) -> \(url) {\(r)}")
+    let created = FileManager.default.createFile(atPath: filePath, contents: html.data(using: .utf8))
+    if !created {
+        try! FileManager.default.createDirectory(atPath: "./root/l", withIntermediateDirectories: true)
+        _ = FileManager.default.createFile(atPath: filePath, contents: html.data(using: .utf8))
+    }
+    print("[INFO] created \(filePath) -> \(url)")
 }
