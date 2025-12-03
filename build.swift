@@ -11,6 +11,6 @@ for (id, url) in links {
     </script>
     """
     let filePath = "./root/l/\(id).html"
-    FileManager.default.createFile(atPath: filePath, contents: html.data(using: .utf8))
-    print("[INFO] created \(filePath) -> \(url)")
+    let r = FileManager.default.createFile(atPath: filePath, contents: html.data(using: .utf8))
+    print("[INFO] created \(filePath) -> \(url) {\(r)}")
 }
